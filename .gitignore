@@ -130,3 +130,6 @@ dmypy.json
 
 ECOLI/Data/
 KLEBSIELLA/Data/
+# pixi environments
+.pixi/*
+!.pixi/config.toml

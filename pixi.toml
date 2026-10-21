@@ -1,0 +1,23 @@
+[workspace]
+authors = ["igoodridge <isabelle.goodridge@ndm.ox.ac.uk>"]
+channels = ["conda-forge"]
+name = "SMC2-ILM"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "3.12.*"
+numpy = ">=2.5.4,<3"
+pandas = ">=3.0.6,<4"
+matplotlib = ">=3.11.2,<4"
+seaborn = ">=0.13.2,<0.14"
+geopandas = ">=1.2.0,<2"
+pyproj = ">=3.8.0,<4"
+jupyterlab = ">=4.6.4,<5"
+ipykernel = ">=7.4.0,<8"
+
+[pypi-dependencies]
+tensorflow = ">=2.18"
+tensorflow-probability = { version = ">=0.25.0, <0.26", extras = ["tf"] }

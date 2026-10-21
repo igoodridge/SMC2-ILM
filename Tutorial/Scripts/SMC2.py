@@ -214,11 +214,19 @@ class SMC2_epidemic():
     
     ################################################
     # resample the particles
+    # when all weights are zero, resample uniformly. likelihood for theta is still log(mean(0)) = -inf so outer SMC2
+    # layer gives theta particle zero weight but this stops inner filter from crashing
     def resampling(self, weights_t):
+
+        # if all particles have zero weight (NaN after normalising), fall back to uniform
+        weights_t = tf.where(tf.reduce_all(tf.math.is_finite(weights_t)),
+                            weights_t,
+                            tf.ones_like(weights_t)/self.n_particles)
 
         A_t =  tfp.distributions.Categorical(probs = weights_t, dtype=tf.int32).sample((self.n_particles))
 
         return A_t
+
 
     ################################################
     # Initialization of the SMC

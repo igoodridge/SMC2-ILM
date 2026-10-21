@@ -139,7 +139,7 @@ def create_delta_t_list(Y, max_delta_t):
         else:
             rest = np.array([schedule_differenece%max_delta_t])
             delta_t_list = np.concatenate((delta_t_list, rest))
-            schedule_differenece = schedule_differenece - rest
+            schedule_differenece = schedule_differenece - rest[0]
             n_max_delta_t = int(schedule_differenece/max_delta_t)
             new_delta_t_list = np.array([max_delta_t]*n_max_delta_t)
             delta_t_list = np.concatenate((delta_t_list, new_delta_t_list))
